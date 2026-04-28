@@ -1,0 +1,44 @@
+@model IEnumerable<Day2MVC.Areas.Trainees.Models.Trainee>
+
+<h2 class="mt-3">Trainees</h2>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Trainee</a>
+</p>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-info">No trainees found. Use "Create New Trainee" to add one.</div>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Track</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Birthdate</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach(var t in Model) {
+            <tr>
+                <td>@t.Name</td>
+                <td>@t.Trk?.Name</td>
+                <td>@t.Gender</td>
+                <td>@t.Email</td>
+                <td>@t.MobileNo</td>
+                <td>@t.Birthdate.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@t.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@t.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@t.ID">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

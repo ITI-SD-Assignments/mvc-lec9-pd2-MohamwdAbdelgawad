@@ -1,0 +1,86 @@
+1. Create ASP.NetCore MVC webApp which manages Trainees and their Tracks and Courses:
+	- Create All CRUD operations to manage your application
+	- Use EF_Core Code First to create TraineesDB
+	- Use Repositories and apply custom-service-injection in your application 
+	- Use TagHelpers in your views : <environment> , <partial>
+	- Try to make your webApp have a nice look by applying different styles and bootstrap, use:"Styling & Bundling"
+	- Use client-side packages to apply Validation on your application
+
+
+Track should have the following properties:
+- int ID
+- string Name
+- string Description
+- IEnumrable<Trainee>? Trainees --> Nullable
+
+
+Trainee should have the following properties:
+- int ID
+- string Name
+- Gender Gender
+- string Email
+- string MobileNo
+- DateTime Birthdate
+[ForeignKey("Trk")]
+- int TrackID
+- Track Trk
+
+
+Course should have the following properties:
+- int ID
+- string Topic
+- float Grade
+
+
+TraineeCourse should have the following properties:
+- int TraineeID
+- int CourseID
+- float Grade
+- Trainee? Trainee --> Nullable
+- Course? Course --> Nullable
+
+
+* Notes: 
+	Apply data annotation on your classes 
+	Track-Trainee relationship [1 : M]
+	Trainee-Course relationship [M : M]
+
+----------------------------------------------------------------------	
+
+2. MVC webApp which Display Products:
+
+	- Create All CRUD operations to manage your Products & Customers
+
+	- Display Product Details as Bootstrap Card in the following Views:
+		(Index.cshtml, Details.cshtml, Delete.cshtml)
+
+	- Create PartialView named "_CardPartial" to reduce repetition of Card Tags
+
+	- Create a ViewModel Class named "Product_Cust_ViewModel", use it with "Details" action in Customer 	Controller to display (Customer ID, Customer Name along with All his Products Details) 
+ 
+
+Product should have the following properties:
+- ID
+- Name
+- Image
+- Price
+- Description
+  [ForeignKey("Customer")]
+- CustID
+- Customer Customer
+
+
+Customer should have the following properties:
+- ID
+- Name
+- Gender
+- Email
+- PhoneNum
+- IEnumrable<Product>? Products
+
+
+** Apply all necessary DataAnnotations on your classes
+*** It is 1:M relationship (1 Customer -> Many Products)
+
+
+am using ms sql server express 

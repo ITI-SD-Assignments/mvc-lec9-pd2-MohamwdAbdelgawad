@@ -1,0 +1,11 @@
+@model Day2MVC.Areas.Trainees.Models.Course
+
+<h2>Course Details</h2>
+<div>
+    <h4>@Model.Topic</h4>
+    <p><strong>Grade:</strong> @Model.Grade</p>
+</div>
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.ID" >Edit</a>
+    <a asp-action="Index">Back to List</a>
+</p>

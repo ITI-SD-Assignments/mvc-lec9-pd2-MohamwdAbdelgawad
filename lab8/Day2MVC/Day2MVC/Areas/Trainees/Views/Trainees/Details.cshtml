@@ -1,0 +1,15 @@
+@model Day2MVC.Areas.Trainees.Models.Trainee
+
+<h2>Trainee Details</h2>
+<div>
+    <h4>@Model.Name</h4>
+    <p><strong>Track:</strong> @Model.Trk?.Name</p>
+    <p><strong>Gender:</strong> @Model.Gender</p>
+    <p><strong>Email:</strong> @Model.Email</p>
+    <p><strong>Mobile:</strong> @Model.MobileNo</p>
+    <p><strong>Birthdate:</strong> @Model.Birthdate.ToShortDateString()</p>
+</div>
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</p>
