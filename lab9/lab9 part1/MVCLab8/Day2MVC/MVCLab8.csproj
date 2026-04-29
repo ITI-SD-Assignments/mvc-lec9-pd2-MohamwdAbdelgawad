@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>MVCLab8</RootNamespace>
+    <!-- Avoid generating an apphost executable during design-time builds to prevent file locks when running EF tools -->
+    <UseAppHost>false</UseAppHost>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="10.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Products\Data\" />
+    <Folder Include="Areas\Trainees\Data\" />
+  </ItemGroup>
+
+  <!-- Ensure bundle output folder and placeholder exist so Static Web Assets can resolve assets during build -->
+  <Target Name="EnsureBundleOutputs" BeforeTargets="ResolveProjectStaticWebAssets">
+    <MakeDir Directories="$(MSBuildProjectDirectory)\wwwroot\css\min" Condition="!Exists('$(MSBuildProjectDirectory)\wwwroot\css\min')" />
+    <WriteLinesToFile File="$(MSBuildProjectDirectory)\wwwroot\css\min\all.css" Lines="/* bundle placeholder */" Overwrite="false" Encoding="UTF-8" />
+  </Target>
+
+</Project>

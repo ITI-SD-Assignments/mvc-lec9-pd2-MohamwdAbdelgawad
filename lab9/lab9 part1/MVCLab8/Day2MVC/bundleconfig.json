@@ -1,0 +1,13 @@
+[
+    {
+        "inputFiles": [
+            "wwwroot/css/site.css",
+            "wwwroot/css/bootstrap.min.css"
+        ],
+        "outputFileName": "wwwroot/css/min/all.css",
+        "minify": {
+            "enabled": true,
+            "commentMode": "all"
+        }
+    }
+]

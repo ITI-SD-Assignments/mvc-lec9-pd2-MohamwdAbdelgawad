@@ -1,0 +1,20 @@
+@model dynamic
+
+<div class="card h-100">
+    @if (Model?.Image != null)
+    {
+        <img src="~/images/@Model.Image" class="card-img-top" alt="@Model.Name" />
+    }
+    <div class="card-body d-flex flex-column">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="card-text">@Model.Description</p>
+        @{
+            var priceObj = Model?.Price;
+            var priceStr = priceObj == null ? string.Empty : priceObj.ToString();
+        }
+        @if (!string.IsNullOrEmpty(priceStr))
+        {
+            <p class="card-text mt-auto"><strong>Price:</strong> @priceStr</p>
+        }
+    </div>
+</div>

@@ -1,0 +1,19 @@
+@model MVCLab8.Areas.Trainees.Models.Course
+
+<h2>Assign Trainees to @Model.Topic</h2>
+
+<form asp-action="Assign" method="post">
+    <input type="hidden" name="id" value="@Model.ID" />
+    <div class="mb-3">
+        @foreach(var t in (ViewBag.AllTrainees as List<MVCLab8.Areas.Trainees.Models.Trainee>))
+        {
+            var isChecked = Model.TraineeCourses?.Any(tc => tc.TraineeID == t.ID) ?? false;
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="traineeIds" value="@t.ID" @(isChecked ? "checked" : "") />
+                <label class="form-check-label">@t.Name (@t.Trk?.Name)</label>
+            </div>
+        }
+    </div>
+    <button type="submit" class="btn btn-primary">Save Assignments</button>
+    <a asp-action="Details" asp-route-id="@Model.ID" class="btn btn-secondary">Back</a>
+</form>
