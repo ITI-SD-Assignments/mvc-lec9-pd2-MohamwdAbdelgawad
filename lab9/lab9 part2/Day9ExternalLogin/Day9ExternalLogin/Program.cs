@@ -23,14 +23,14 @@ namespace Day9ExternalLogin
             builder.Services.AddAuthentication()
                 .AddGoogle(options =>
                 {
-                    options.ClientId = "504490736820-kk27017fp774eudm4eb4e7d27oc0t3hs.apps.googleusercontent.com";
-                    options.ClientSecret = "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";
+                    options.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+                    options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
                 }).AddGitHub(options =>
                 {
-                    options.ClientId = "Ov23lisPzAvfiLwMw0EI";
-                    options.ClientSecret = "811bca508eb31721226bd7c26cef25de95457970";
+                    options.ClientId = builder.Configuration["Authentication:GitHub:ClientId"];
+                    options.ClientSecret = builder.Configuration["Authentication:GitHub:ClientSecret"];
 
-                   
+
                 });
 
             var app = builder.Build();
