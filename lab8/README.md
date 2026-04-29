@@ -1,5 +1,5 @@
 # Lab 8
-
+## video link: https://drive.google.com/file/d/1b5aNYPNZ3mj0npMFl0TSPiSlsehcvdVI/view?usp=drive_link
 ## Images
 
 Below are the images used in this lab:
